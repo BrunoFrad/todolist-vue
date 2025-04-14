@@ -14,7 +14,9 @@
 
     newTasks.value = props.tasks;
 
-    console.log(newTasks.value);
+    watch(newTasks.value, () => {
+        localStorage.setItem("tasks", JSON.stringify(newTasks.value));
+    });
 
 </script>
 

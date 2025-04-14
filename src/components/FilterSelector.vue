@@ -6,10 +6,16 @@
         SelectTrigger,
         SelectValue,
     } from '@/components/ui/select';
+    import { ref, defineExpose } from 'vue';
+
+    const currentFilter = ref("");
+
+    defineExpose( currentFilter );
+
 </script>
 
 <template>
-    <Select>
+    <Select v-model="currentFilter">
             <SelectTrigger class="w-2/4">
                 <SelectValue placeholder="Filter" />
             </SelectTrigger>

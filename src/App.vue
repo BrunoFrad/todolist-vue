@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import Header from '@/components/Header.vue';
-  import Tasks from '@/components/Tasks.vue';
+  import Tasks from '@/components/TasksController.vue';
 </script>
 
 <template>

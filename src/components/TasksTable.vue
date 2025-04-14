@@ -26,8 +26,8 @@
         No More Tasks 😄
     </h1>
 
-    <section v-else class="border rounded w-[70vw] lg:w-[45vw] lg:h-[6vh] sm:h[3vh]">
-        <Table>
+    <section v-else class="rounded w-[70vw] lg:w-[45vw] lg:h-[6vh] sm:h[3vh]">
+        <Table class="border">
             <TableBody>
                 <TaskRow :taskList="newTasks" />
             </TableBody>

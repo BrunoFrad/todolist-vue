@@ -1,8 +1,9 @@
 <script setup lang="ts">
-    import { onMounted, ref, defineProps, watch } from 'vue';
-    
-    const tasksStored = ref<string | null>(null);
-    let newTasks: TaskType[] = []
+    import { ref, defineProps, watch } from 'vue';
+    import { Table, TableBody } from './ui/table';
+    import TaskRow from './TaskRow.vue';
+
+    const newTasks = ref<TaskType[]>([])
     
     const props = defineProps({
         tasks: {
@@ -11,18 +12,9 @@
         }
     });
 
-    onMounted(() => {
-        tasksStored.value = localStorage.getItem("tasks");
-        if (tasksStored.value)
-            newTasks = JSON.parse(tasksStored.value);
+    newTasks.value = props.tasks;
 
-    });
-
-    watch(props, (newProps) => {
-        newProps.tasks.forEach((el) => {
-            newTasks.push(el);
-        });
-    })
+    console.log(newTasks.value);
 
 </script>
 
@@ -32,6 +24,12 @@
         No More Tasks 😄
     </h1>
 
-    <h1 v-else>Tasks...</h1>
+    <section v-else class="border rounded w-[70vw] lg:w-[45vw] lg:h-[6vh] sm:h[3vh]">
+        <Table>
+            <TableBody>
+                <TaskRow :taskList="newTasks" />
+            </TableBody>
+        </Table>
+    </section>
 
 </template>

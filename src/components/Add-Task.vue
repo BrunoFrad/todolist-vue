@@ -15,17 +15,20 @@
         if (storedTasks != null)
             taskArr = JSON.parse(storedTasks);
 
-        const newTask: TaskType = { // New task with the info from the input
-            name: inputText.value,
-            filter: filterComponent.value,
-            done: false
+        if (taskArr?.length <= 9) {
+            const newTask: TaskType = { // New task with the info from the input
+                name: inputText.value,
+                filter: filterComponent.value,
+                done: false
+            }
+
+            taskArr.push(newTask);
+
+            localStorage.setItem("tasks", JSON.stringify(taskArr));
+
+            emit("taskStorage", taskArr.pop());
         }
-        
-        taskArr.push(newTask);
 
-        localStorage.setItem("tasks", JSON.stringify(taskArr));
-
-        emit("taskStorage", taskArr);
         inputText.value = "";
         filterComponent.value = null;
     }
@@ -33,7 +36,7 @@
 </script>
 
 <template>
-    <section class="flex w-5/6 lg:w-lg items-center gap-1.5">
+    <section class="flex w-5/6 lg:w-3/6 items-center gap-1.5">
         <Input type="text" placeholder="Type your new task" v-model="inputText" />
         <FilterSelector v-model="filterComponent" />
         <Button @click="handleSubmit">

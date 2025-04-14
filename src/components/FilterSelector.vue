@@ -21,11 +21,11 @@
             </SelectTrigger>
             <SelectContent>
                 <SelectItem value="none">None</SelectItem>
-                <SelectItem value="yellow">
+                <SelectItem value="purple">
                     <svg height="5" width="5" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="5" cx="5" cy="8" fill="yellow" />
+                        <circle r="5" cx="5" cy="8" fill="purple" />
                     </svg> 
-                    Yellow
+                    Purple
                 </SelectItem>
                 <SelectItem value="red">
                     <svg height="5" width="5" xmlns="http://www.w3.org/2000/svg">

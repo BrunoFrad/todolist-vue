@@ -14,8 +14,15 @@
 
     newTasks.value = props.tasks;
 
-    watch(newTasks.value, () => {
-        localStorage.setItem("tasks", JSON.stringify(newTasks.value));
+    function handleDelete(taskName: string) {
+        for(let i = 0; i < newTasks.value.length; i++) {
+            if (newTasks.value[i].name === taskName)
+                newTasks.value.splice(i, 1);
+        }
+    }
+
+    watch(newTasks, (updatedTasks) => {
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     });
 
 </script>
@@ -29,7 +36,7 @@
     <section v-else class="rounded w-[70vw] lg:w-[45vw] lg:h-[6vh] sm:h[3vh]">
         <Table class="border">
             <TableBody>
-                <TaskRow :taskList="newTasks" />
+                <TaskRow :taskList="newTasks" @deleteTask="handleDelete" />
             </TableBody>
         </Table>
     </section>

@@ -19,7 +19,7 @@
             const newTask: TaskType = { // New task with the info from the input
                 name: inputText.value,
                 filter: filterComponent.value,
-                done: false
+                done: false,
             }
 
             taskArr.push(newTask);

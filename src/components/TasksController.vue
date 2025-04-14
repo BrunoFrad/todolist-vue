@@ -11,7 +11,7 @@
     }
 
     watch(tasksArr, (newVal) => {
-        localStorage.setItem("Arr", JSON.stringify(newVal));
+        localStorage.setItem("tasks", JSON.stringify(newVal));
     }, { deep: true });
 
     const getGap = computed(() => {

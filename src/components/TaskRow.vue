@@ -2,6 +2,7 @@
     import { defineProps } from 'vue';
     import { TableRow, TableCell } from './ui/table';
     import { Checkbox } from './ui/checkbox';
+    import { Button } from './ui/button';
 
     defineProps<{taskList : TaskType[]}>();
 
@@ -19,6 +20,11 @@
         </TableCell>
         <TableCell>
             <Checkbox :model-value="task.done" @click="task.done = !task.done" />
+        </TableCell>
+        <TableCell class="text-right">
+            <Button @click="$emit('deleteTask', task.name)">
+                Delete
+            </Button>
         </TableCell>
     </TableRow>
 </template>
